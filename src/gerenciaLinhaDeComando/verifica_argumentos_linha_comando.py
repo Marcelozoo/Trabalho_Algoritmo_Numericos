@@ -6,8 +6,7 @@ def verifica_linha_de_comando() -> Union[str, None]:
     """
     Recebendo o input da linha de comando e verificando os argumentos que foram passados.
 
-    :return - Caso os argumentos estejam corretos,retorna uma string
-              com o caminho do arquivo ou seu nome.
+    :return - Caso os argumentos estejam corretos,retorna uma string com o caminho do arquivo ou seu nome.
               Caso os argumentos estejam incorretos,retorna uma mensagem de erro e encerra o programa.
     """
     if len(sys.argv) == 2:

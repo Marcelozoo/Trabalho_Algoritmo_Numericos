@@ -14,7 +14,7 @@ def ler_arquivo(
               a precisão e o sistema linear a ser resolvido.
     """
 
-    np.set_printoptions(precision=4)
+    np.set_printoptions(precision=6)
 
     quantidade_sistemas = np.loadtxt(
         fname=caminho_arquivo, dtype=int, delimiter=" ", max_rows=1, usecols=(0)
@@ -23,36 +23,41 @@ def ler_arquivo(
         fname=caminho_arquivo, dtype=int, delimiter=" ", max_rows=1, usecols=(1)
     )
     precisao = np.loadtxt(
-        fname=caminho_arquivo, dtype=np.float64, delimiter=" ", max_rows=1, usecols=(2)
+        fname=caminho_arquivo,
+        dtype=np.float64,
+        delimiter=" ",
+        max_rows=1,
+        usecols=(2),
     )
 
     matriz_A = np.loadtxt(
         fname=caminho_arquivo,
-        dtype=np.float64,
+        dtype=np.longdouble,
         delimiter=" ",
         max_rows=ordem_da_matriz,
         skiprows=1,
+        usecols=np.arange(0, ordem_da_matriz),
     )
     vetores_b = []
 
     if quantidade_sistemas == 1:
-        for i in range(quantidade_sistemas):
+        for i in range(1, quantidade_sistemas + 1):
             vetor_b = np.loadtxt(
                 fname=caminho_arquivo,
-                dtype=np.float64,
+                dtype=np.longdouble,
                 delimiter=" ",
                 max_rows=ordem_da_matriz,
-                skiprows=4 + i,
+                skiprows=ordem_da_matriz + i,
             )
             vetores_b.append(vetor_b)
     else:
-        for i in range(0, quantidade_sistemas - 1):
+        for i in range(1, quantidade_sistemas + 1):
             vetor_b = np.loadtxt(
                 fname=caminho_arquivo,
-                dtype=np.float64,
+                dtype=np.longdouble,
                 delimiter=" ",
-                max_rows=ordem_da_matriz,
-                skiprows=4 + i,
+                max_rows=1,
+                skiprows=ordem_da_matriz + i,
             )
             vetores_b.append(vetor_b)
 

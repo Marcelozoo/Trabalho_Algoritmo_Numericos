@@ -12,8 +12,10 @@ diretorio_projeto_atual = os.path.join(os.path.dirname(__file__), "..")
 diretorio_projeto_atual = os.path.normpath(diretorio_projeto_atual)
 sys.path.append(diretorio_projeto_atual)
 
-from src.verifica_argumentos_linha_comando import verifica_linha_de_comando
-from src.ler_arquivo import ler_arquivo
+from src.gerenciaLinhaDeComando.verifica_argumentos_linha_comando import (
+    verifica_linha_de_comando,
+)
+from src.gerenciadorDeArquivos.ler_arquivo import ler_arquivo
 
 
 def test_verifica_argumento_linha_comando():
